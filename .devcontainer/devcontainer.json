@@ -6,10 +6,18 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 
 	"features": {
+        "aws-cli": "latest",
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"installDockerBuildx": true,
 			"version": "latest",
-			"enableNonRootDocker": "true",
-			"moby": "false"
+			"dockerDashComposeVersion": "v2"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"version": "3.11"
+		},
+		"ghcr.io/devcontainers-contrib/features/pipenv:2": {
+			"version": "latest"
 		}
 	},
 
@@ -28,5 +36,14 @@
 	// "customizations": {},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "root"
+	"remoteUser": "root",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.debugpy",
+				"ms-toolsai.jupyter"
+			]
+		}
+	}
 }
