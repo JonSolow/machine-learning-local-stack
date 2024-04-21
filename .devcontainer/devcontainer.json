@@ -26,6 +26,11 @@
 		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	},
 
+	// mount for aws credentials
+	"mounts": [
+		"source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
+	],
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
