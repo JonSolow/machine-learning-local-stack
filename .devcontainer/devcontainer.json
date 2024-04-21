@@ -1,12 +1,17 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-in-docker
 {
-	"name": "Docker outside of Docker",
+	"name": "Docker in Docker",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 
 	"features": {
         "aws-cli": "latest",
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "false"
+		},
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
 			"installDockerBuildx": true,
 			"version": "latest",
@@ -20,12 +25,6 @@
 			"version": "latest"
 		}
 	},
-
-	// Use this environment variable if you need to bind mount your local source code into a new container.
-	"remoteEnv": {
-		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-	},
-
 	// mount for aws credentials
 	"mounts": [
 		"source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
