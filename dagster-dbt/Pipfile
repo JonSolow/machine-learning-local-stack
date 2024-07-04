@@ -9,6 +9,7 @@ dagster-aws = "*"
 dagster-dbt = "*"
 dbt-duckdb = "*"
 dagster-webserver = "*"
+dagster-embedded-elt = "*"
 
 [dev-packages]
 
