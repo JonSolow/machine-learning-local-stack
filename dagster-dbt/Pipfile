@@ -10,6 +10,7 @@ dagster-dbt = "*"
 dbt-duckdb = "*"
 dagster-webserver = "*"
 dagster-embedded-elt = "*"
+dlt = {extras = ["duckdb"], version = "*"}
 
 [dev-packages]
 
