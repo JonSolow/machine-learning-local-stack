@@ -1,10 +1,10 @@
 from dagster import AssetExecutionContext
 from dagster_dbt import DbtCliResource, dbt_assets
 from dagster_embedded_elt.dlt import DagsterDltResource, dlt_assets
-from dlt import pipeline
+from dlt import pipeline, destinations
 from dlt_sources.pokemon import source as pokemon_source
 
-from .constants import dbt_manifest_path
+from .constants import dbt_manifest_path, dbt_duckdb_path
 
 
 @dbt_assets(manifest=dbt_manifest_path)
@@ -17,7 +17,7 @@ def dbt_project_dbt_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     dlt_pipeline=pipeline(
         pipeline_name="pokemon",
         dataset_name="pokemon_data",
-        destination="duckdb",
+        destination=destinations.duckdb(dbt_duckdb_path),
         progress="log",
     ),
     name="pokemon",
